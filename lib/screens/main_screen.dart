@@ -1,4 +1,3 @@
-// lib/screens/main_screen.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,6 +14,51 @@ class MainScreen extends StatelessWidget {
 
   final List<PokemonType> types = [
     PokemonType(
+      name: 'Normal',
+      color: Colors.grey.shade400,
+      icon: Icons.circle_outlined,
+    ),
+    PokemonType(
+      name: 'Fighting',
+      color: Colors.brown.shade700,
+      icon: Icons.sports_mma,
+    ),
+    PokemonType(
+      name: 'Flying',
+      color: Colors.lightBlue.shade300,
+      icon: Icons.flight,
+    ),
+    PokemonType(
+      name: 'Poison',
+      color: Colors.purple.shade400,
+      icon: Icons.science,
+    ),
+    PokemonType(
+      name: 'Ground',
+      color: Colors.brown.shade400,
+      icon: Icons.landscape,
+    ),
+    PokemonType(
+      name: 'Rock',
+      color: Colors.brown.shade500,
+      icon: Icons.terrain,
+    ),
+    PokemonType(
+      name: 'Bug',
+      color: Colors.lightGreen.shade500,
+      icon: Icons.bug_report,
+    ),
+    PokemonType(
+      name: 'Ghost',
+      color: Colors.deepPurple.shade400,
+      icon: Icons.visibility_off,
+    ),
+    PokemonType(
+      name: 'Steel',
+      color: Colors.blueGrey.shade400,
+      icon: Icons.shield,
+    ),
+    PokemonType(
       name: 'Fire',
       color: Colors.red.shade400,
       icon: Icons.local_fire_department,
@@ -24,12 +68,42 @@ class MainScreen extends StatelessWidget {
       color: Colors.blue.shade400,
       icon: Icons.water_drop,
     ),
+    PokemonType(name: 'Grass', color: Colors.green.shade400, icon: Icons.grass),
     PokemonType(
       name: 'Electric',
       color: Colors.yellow.shade700,
       icon: Icons.electric_bolt,
     ),
-    PokemonType(name: 'Grass', color: Colors.green.shade400, icon: Icons.grass),
+    PokemonType(
+      name: 'Psychic',
+      color: Colors.pink.shade400,
+      icon: Icons.psychology,
+    ),
+    PokemonType(
+      name: 'Ice',
+      color: Colors.lightBlue.shade200,
+      icon: Icons.ac_unit,
+    ),
+    PokemonType(
+      name: 'Dragon',
+      color: Colors.indigo.shade400,
+      icon: Icons.auto_awesome,
+    ),
+    PokemonType(
+      name: 'Dark',
+      color: Colors.grey.shade800,
+      icon: Icons.dark_mode,
+    ),
+    PokemonType(
+      name: 'Fairy',
+      color: Colors.pink.shade200,
+      icon: Icons.auto_fix_high,
+    ),
+    PokemonType(
+      name: 'Stellar',
+      color: Colors.amber.shade400,
+      icon: Icons.stars,
+    ),
   ];
 
   @override
@@ -42,7 +116,6 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              // Title
               Text(
                 'Welcome to the Pokédex',
                 style: TextStyle(
@@ -52,8 +125,6 @@ class MainScreen extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-
-              // Professor Oak
               Expanded(
                 flex: 2,
                 child: Padding(
@@ -64,8 +135,6 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Professor's Question
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
@@ -78,8 +147,6 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Type Grid
               Expanded(
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -99,18 +166,9 @@ class MainScreen extends StatelessWidget {
                       ),
                       child: InkWell(
                         onTap: () {
-                          if (type.name == 'Fire') {
-                            GoRouter.of(context).goNamed('fire-pokemon');
-                          }
-                          if (type.name == 'Water') {
-                            GoRouter.of(context).goNamed('water-pokemon');
-                          }
-                          if (type.name == 'Electric') {
-                            GoRouter.of(context).goNamed('electric-pokemon');
-                          }
-                          if (type.name == 'Grass') {
-                            GoRouter.of(context).goNamed('grass-pokemon');
-                          }
+                          final routeName =
+                              '${type.name.toLowerCase()}-pokemon';
+                          GoRouter.of(context).goNamed(routeName);
                         },
                         borderRadius: BorderRadius.circular(15),
                         child: Container(
